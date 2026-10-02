@@ -311,14 +311,6 @@ class _MainAppContent extends StatelessWidget {
       debugPrint('[Main] Local cache check failed: $e');
     }
 
-    // 3. Google Reviewer Fallback (if no target role or cached role is found)
-    final currentUser = FirebaseAuth.instance.currentUser;
-    if (currentUser?.email == 'googletest@leoengineer.com') {
-      debugPrint('[Main] Google test user detected on cache miss. Falling back to "employee" role.');
-      await SessionService.saveRoleOnly('employee');
-      return 'employee';
-    }
-
     debugPrint('[Main] Cache Miss: Proceeding to Firestore verification...');
     
     // Give registration logic a head start (especially important for slow Firestore writes)
@@ -412,6 +404,13 @@ class _MainAppContent extends StatelessWidget {
         debugPrint('[Main] Firestore connection error (attempt ${i + 1}): $e');
         await Future.delayed(const Duration(seconds: 2));
       }
+    }
+    
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser?.email == 'googletest@leoengineer.com') {
+      debugPrint('[Main] Google test user detected on final fallback.');
+      final lastRole = await SessionService.getRole();
+      return lastRole ?? 'employee';
     }
     
     debugPrint('[Main] FATAL: Role verification failed after max retries for $uid');

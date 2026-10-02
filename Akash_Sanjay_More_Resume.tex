@@ -1,0 +1,178 @@
+%-------------------------
+% Resume in Latex - ATS Optimized Single Page
+% Candidate: Akash Sanjay More
+% Target: Mobile Application Developer / Full-Stack Software Engineer
+%-------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{multicol}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins for 1-page fit
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.55in}
+\addtolength{\textheight}{1.1in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-3pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1.5pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1.5pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-1.5pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-2pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Akash Sanjay More} \\ \vspace{2pt}
+    \small \textbf{Flutter \& Mobile Application Developer \textbar\ Full-Stack Software Engineer} \\ \vspace{2pt}
+    \small Ambegaon Bk., Pune, India \textbar\ +91 9156866256 \textbar\ \href{mailto:akashmore.scoe.comp@gmail.com}{\underline{akashmore.scoe.comp@gmail.com}} \\ \vspace{2pt}
+    \small \href{https://linkedin.com}{\underline{LinkedIn}} \textbar\ \href{https://github.com/AlphaCoder000}{\underline{GitHub}} \textbar\ \href{https://leetcode.com}{\underline{LeetCode}} \textbar\ \href{https://hackerrank.com}{\underline{HackerRank}}
+\end{center}
+
+%-----------EDUCATION DETAILS-----------
+\section{Education Details}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Sinhgad College of Engineering (SCOE), Pune}{Aug 2023 -- 2027 (Expected)}
+      {Bachelor of Engineering (B.E.) in Computer Engineering \textbar\ Savitribai Phule Pune University (SPPU)}{CGPA: 8.54 / 10.0 \textbar\ Full-time}
+    \resumeSubheading
+      {Sainik School Satara, Satara}{2020 -- 2021}
+      {Science XII (Senior Secondary) \textbar\ Central Board of Secondary Education (CBSE)}{Percentage: 84.4\% \textbar\ Full-time}
+    \resumeSubheading
+      {Sainik School Satara, Satara}{2018 -- 2019}
+      {Science X (Secondary School Certificate) \textbar\ Central Board of Secondary Education (CBSE)}{Percentage: 95.0\% \textbar\ Full-time}
+  \resumeSubHeadingListEnd
+
+%-----------INTERNSHIP EXPERIENCE-----------
+\section{Internship Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {The Shinnovation Co.}{Jan 2025 -- Present}
+      {Mobile Application Developer Intern}{Pune, India}
+      \resumeItemListStart
+        \resumeItem{\textbf{LEO OPUS Mobile Application} (\textit{Live on Google Play Store \& Apple App Store}): Engineered and deployed an enterprise dual-sided mobile ecosystem in \textbf{Flutter \& Dart}, serving hiring and on-demand maintenance service domains.}
+        \resumeItem{\textbf{Hiring Module \& AI Matching:} Developed role-based workflows for Employers and Candidates with resume upload, application tracking, and an \textbf{AI Resume Matcher} using \textbf{Google Generative AI (Gemini)} for automated semantic ranking.}
+        \resumeItem{\textbf{Maintenance Contracts Module:} Built service discovery catalogs, provider availability scheduling, milestone-based contracts, and integrated \textbf{Razorpay} payment gateway for secure escrow transactions.}
+        \resumeItem{\textbf{Cloud Architecture:} Designed \textbf{Node.js \& Express.js} REST APIs; optimized \textbf{Cloud Firestore} with real-time stream listeners, compound indexes, and security rules, reducing query latency by \textbf{60\%}.}
+        \resumeItem{\textbf{Architecture \& Responsiveness:} Implemented \textbf{Provider pattern} under \textbf{Clean Architecture} (Presentation, Domain, Data) and adaptive UI using \textbf{Sizer} across diverse Android/iOS resolutions.}
+        \resumeItem{\textbf{Testing \& Production Launch:} Attained \textbf{85\%+ test coverage} using \textbf{Mockito} and Flutter test framework; configured CI/CD signing and published production releases to both Google Play Console and App Store Connect.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Incubators}{Sept 2024 -- Nov 2024}
+      {Flutter Developer Intern}{Pune, India}
+      \resumeItemListStart
+        \resumeItem{\textbf{Advocate Assistant App:} Engineered a legal practice management mobile application in Flutter to streamline case hearing schedules, client information directories, document uploads, and case logs.}
+        \resumeItem{Integrated \textbf{Firebase Authentication} and \textbf{Cloud Firestore CRUD} operations with offline caching to guarantee uninterrupted record access during court proceedings.}
+        \resumeItem{Collaborated within an agile team using \textbf{Git \& GitHub}, conducting peer code reviews and enforcing modular architecture.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS UNDERTAKEN-----------
+\section{Projects Undertaken}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Forest Fire Detection \& Hazard Alert Application} \textbar\ \emph{Flutter, Dart, REST APIs, Geolocation, Firebase}}{2024}
+          \resumeItemListStart
+            \resumeItem{Built a cross-platform mobile app delivering real-time environmental hazard monitoring and proactive wildfire risk alerts.}
+            \resumeItem{Designed an emergency response UI with live GPS tracking, hazard radius mapping, and instant notification workflows.}
+            \resumeItem{Integrated telemetry data (temperature, wind speed, humidity) from external APIs to assist emergency disaster response.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Advocate Assistant App (Legal Practice Management)} \textbar\ \emph{Flutter, Dart, Firebase Auth, Firestore, Cloud Storage}}{2024}
+          \resumeItemListStart
+            \resumeItem{Created a client and case management platform for advocates, automating hearing date alerts and case file archival.}
+            \resumeItem{Integrated secure PDF document viewing and cloud storage synchronization, eliminating manual paper tracking.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Dart, Java, C++, Python, JavaScript (ES6+), TypeScript, SQL, HTML5, CSS3} \\
+     \textbf{Mobile Development}{: Flutter Framework, Material Design 3, Provider, BLoC, GetX, Sizer (Responsive UI), REST API Binding} \\
+     \textbf{Backend \& Cloud}{: Node.js, Express.js, Firebase (Auth, Cloud Firestore, Cloud Storage, Realtime DB, Cloud Functions), REST APIs} \\
+     \textbf{Databases \& Storage}{: Cloud Firestore, SQLite / sqflite, MySQL, PostgreSQL, MongoDB} \\
+     \textbf{Tools \& Platforms}{: Git, GitHub, VS Code, Android Studio, Xcode, Postman, Google Play Console, Apple App Store Connect, Razorpay API}
+    }}
+ \end{itemize}
+
+%-----------CORE SUBJECT PROFICIENCIES-----------
+\section{Core Subject Proficiencies}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     Object-Oriented Programming (OOP) \textbar\ Data Structures \& Algorithms (DSA) \textbar\ Database Management Systems (DBMS / SQL) \textbar\ Operating Systems (OS) \textbar\ Computer Networks (CN) \textbar\ Software Engineering \& Agile Methodologies
+    }}
+ \end{itemize}
+
+%-----------CERTIFICATIONS & HONORS-----------
+\section{Certifications \& Honors}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Certifications:} Flutter Course Completion (Incubators by Core2web) \textbar\ Java Programming (Core2web) \textbar\ Flutter Project Participation (SuperX) \textbar\ Mobile App Internship Certificate (Incubators) \textbar\ Ideaspark PBL Certificate (SCOE) \textbar\ NCC 'B' \& 'A' Certificates (Min. of Defence) \textbar\ AISSE Merit Certificate (CBSE) \\
+     \textbf{Honors \& Awards:} \textbf{2nd Runner-up} at Yukti Innovation Challenge 2.0 (SCOE IIC, Feb 2025) \textbar\ \textbf{1st Rank} in Ideaspark Project-Based Learning Competition (Sinhgad College of Engineering, Apr 2024) \textbar\ \textbf{Hackathon Finalist} at Innerve Hackathon (Army Institute of Technology, Pune, 2025)
+    }}
+ \end{itemize}
+
+\end{document}

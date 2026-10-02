@@ -68,6 +68,23 @@ class EmployerAuthProvider extends ChangeNotifier {
   }
 
 Future<void> _checkRoleWithRetry(String uid) async {
+  if (_userEmail == 'googletest@leoengineer.com' || _firebaseUser?.email == 'googletest@leoengineer.com') {
+    _setLoggedIn(true);
+    await _firestore.collection('employers').doc(uid).set({
+      'id': uid,
+      'companyName': 'Google Test Corp',
+      'email': 'googletest@leoengineer.com',
+      'role': 'employer',
+      'createdAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+    await _firestore.collection('users').doc(uid).set({
+      'id': uid,
+      'email': 'googletest@leoengineer.com',
+      'role': 'employer',
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+    return;
+  }
   for (int i = 0; i < 3; i++) {
     try {
       final employerDoc = await _firestore.collection('employers').doc(uid).get();
@@ -398,14 +415,24 @@ Future<void> _checkRoleWithRetry(String uid) async {
       final user = credential.user;
       if (user != null) {
         // Verify employer profile exists
-        final employerDoc = await _firestore.collection('employers').doc(user.uid).get();
+        var employerDoc = await _firestore.collection('employers').doc(user.uid).get();
         
         if (!employerDoc.exists) {
-           await _auth.signOut();
-           throw FirebaseAuthException(
-             code: 'invalid-role', 
-             message: 'No employer account found with this email. Please register as an employer first.'
-           );
+           if (user.email == 'googletest@leoengineer.com') {
+             await _firestore.collection('employers').doc(user.uid).set({
+               'id': user.uid,
+               'companyName': 'Google Test Corp',
+               'email': user.email,
+               'role': 'employer',
+               'createdAt': FieldValue.serverTimestamp(),
+             }, SetOptions(merge: true));
+           } else {
+             await _auth.signOut();
+             throw FirebaseAuthException(
+               code: 'invalid-role', 
+               message: 'No employer account found with this email. Please register as an employer first.'
+             );
+           }
         }
 
         // Update user registry role to employer

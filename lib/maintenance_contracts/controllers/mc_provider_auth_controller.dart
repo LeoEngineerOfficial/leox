@@ -269,12 +269,26 @@ class McProviderAuthController extends ChangeNotifier {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
       
-      final doc = await _firestore.collection('mc_providers').doc(userCredential.user!.uid).get();
+      var doc = await _firestore.collection('mc_providers').doc(userCredential.user!.uid).get();
       if (!doc.exists) {
-        await _auth.signOut();
-        _isLoading = false;
-        notifyListeners();
-        return 'This account is not registered as a service provider. Please register as a provider first.';
+        if (userCredential.user!.email == 'googletest@leoengineer.com') {
+          final newProvider = McProviderModel(
+            id: userCredential.user!.uid,
+            companyName: 'Google Test Provider',
+            email: userCredential.user!.email ?? '',
+            phone: '9999999999',
+            location: 'Test Location',
+            rating: 5.0,
+            profilePicture: '',
+          );
+          await _firestore.collection('mc_providers').doc(newProvider.id).set(newProvider.toJson());
+          doc = await _firestore.collection('mc_providers').doc(userCredential.user!.uid).get();
+        } else {
+          await _auth.signOut();
+          _isLoading = false;
+          notifyListeners();
+          return 'This account is not registered as a service provider. Please register as a provider first.';
+        }
       }
       
       _currentProvider = McProviderModel.fromJson(doc.data() as Map<String, dynamic>, doc.id);

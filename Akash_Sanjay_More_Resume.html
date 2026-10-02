@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akash Sanjay More - Resume</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 12mm 10mm 12mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 8.8pt;
+      line-height: 1.28;
+      color: #1a1a1a;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+    .resume-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    /* Header */
+    header {
+      text-align: center;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      border-bottom: 1.5px solid #2b3a4a;
+    }
+    h1 {
+      font-size: 19pt;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #0f172a;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .subtitle {
+      font-size: 9.6pt;
+      font-weight: 600;
+      color: #1e3a8a;
+      margin-bottom: 3px;
+    }
+    .contact-bar {
+      font-size: 8.2pt;
+      color: #334155;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .contact-bar a {
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .contact-bar span.separator {
+      color: #94a3b8;
+    }
+    /* Sections */
+    section {
+      margin-top: 5px;
+    }
+    h2 {
+      font-size: 9.8pt;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: #0f172a;
+      text-transform: uppercase;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 1.5px;
+      margin-bottom: 4px;
+    }
+    /* Education Table / Grid */
+    .edu-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.4pt;
+      margin-bottom: 4px;
+    }
+    .edu-table th {
+      background-color: #f1f5f9;
+      color: #1e293b;
+      text-align: left;
+      padding: 3px 6px;
+      font-weight: 600;
+      border: 1px solid #e2e8f0;
+      font-size: 8pt;
+    }
+    .edu-table td {
+      padding: 3px 6px;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      vertical-align: top;
+    }
+    .edu-table td strong {
+      color: #0f172a;
+    }
+    /* Experience & Projects */
+    .item-block {
+      margin-bottom: 4.5px;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+    .item-title {
+      font-size: 8.9pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .item-subtitle {
+      font-size: 8.4pt;
+      font-weight: 600;
+      color: #1e3a8a;
+    }
+    .item-date {
+      font-size: 8.2pt;
+      color: #475569;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .tech-stack-line {
+      font-size: 8.1pt;
+      color: #334155;
+      margin-bottom: 2px;
+      font-style: italic;
+    }
+    .tech-stack-line strong {
+      font-style: normal;
+      color: #0f172a;
+    }
+    ul.bullet-list {
+      list-style-type: disc;
+      padding-left: 14px;
+      margin-top: 1.5px;
+    }
+    ul.bullet-list li {
+      font-size: 8.3pt;
+      color: #27272a;
+      margin-bottom: 1.5px;
+      line-height: 1.24;
+      text-align: justify;
+    }
+    ul.bullet-list li strong {
+      color: #0f172a;
+    }
+    /* Skills & Proficiencies */
+    .skills-category {
+      font-size: 8.3pt;
+      margin-bottom: 2px;
+      line-height: 1.25;
+      color: #27272a;
+    }
+    .skills-category strong {
+      color: #0f172a;
+      display: inline-block;
+      min-width: 145px;
+    }
+    /* Two column grid for Certs and Awards */
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .two-col-grid ul {
+      list-style-type: disc;
+      padding-left: 14px;
+    }
+    .two-col-grid li {
+      font-size: 8.1pt;
+      color: #27272a;
+      margin-bottom: 1.5px;
+      line-height: 1.22;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 7.2pt;
+      font-weight: 600;
+      color: #0369a1;
+      background: #e0f2fe;
+      padding: 0.5px 4px;
+      border-radius: 3px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+      }
+      .resume-container {
+        max-width: 100%;
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="resume-container">
+  <!-- HEADER -->
+  <header>
+    <h1>Akash Sanjay More</h1>
+    <div class="subtitle">Flutter & Mobile Application Developer | Full-Stack Software Engineer</div>
+    <div class="contact-bar">
+      <span>Ambegaon Bk., Pune, Maharashtra, India</span>
+      <span class="separator">|</span>
+      <span>+91 9156866256</span>
+      <span class="separator">|</span>
+      <span><a href="mailto:akashmore.scoe.comp@gmail.com">akashmore.scoe.comp@gmail.com</a></span>
+      <span class="separator">|</span>
+      <span><a href="https://linkedin.com">LinkedIn</a></span>
+      <span class="separator">|</span>
+      <span><a href="https://github.com/AlphaCoder000">GitHub</a></span>
+      <span class="separator">|</span>
+      <span><a href="https://leetcode.com">LeetCode</a></span>
+      <span class="separator">|</span>
+      <span><a href="https://hackerrank.com">HackerRank</a></span>
+    </div>
+  </header>
+
+  <!-- EDUCATION DETAILS -->
+  <section id="education">
+    <h2>Education Details</h2>
+    <table class="edu-table">
+      <thead>
+        <tr>
+          <th style="width: 25%;">Degree / Level</th>
+          <th style="width: 32%;">Institute Name</th>
+          <th style="width: 23%;">University / Board</th>
+          <th style="width: 10%;">Year</th>
+          <th style="width: 10%;">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Under-Graduation (B.E.)</strong><br><span style="font-size:7.6pt;color:#64748b;">Computer Engineering (Full-time)</span></td>
+          <td>Sinhgad College of Engineering (SCOE), Pune</td>
+          <td>Savitribai Phule Pune University (SPPU)</td>
+          <td>2023 – 2027</td>
+          <td><strong>CGPA: 8.54</strong></td>
+        </tr>
+        <tr>
+          <td><strong>12th (HSC - Science)</strong><br><span style="font-size:7.6pt;color:#64748b;">Senior Secondary (Full-time)</span></td>
+          <td>Sainik School Satara, Satara</td>
+          <td>Central Board of Sec. Education (CBSE)</td>
+          <td>2020 – 2021</td>
+          <td><strong>84.4%</strong></td>
+        </tr>
+        <tr>
+          <td><strong>10th (SSC - Science)</strong><br><span style="font-size:7.6pt;color:#64748b;">Secondary School (Full-time)</span></td>
+          <td>Sainik School Satara, Satara</td>
+          <td>Central Board of Sec. Education (CBSE)</td>
+          <td>2018 – 2019</td>
+          <td><strong>95.0%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- INTERNSHIP EXPERIENCE -->
+  <section id="experience">
+    <h2>Internship Experience</h2>
+    
+    <div class="item-block">
+      <div class="item-header">
+        <div>
+          <span class="item-title">The Shinnovation Co.</span> – <span class="item-subtitle">Mobile Application Developer Intern</span>
+        </div>
+        <span class="item-date">Pune, India | Jan 2025 – Present</span>
+      </div>
+      <div class="tech-stack-line">
+        <strong>LEO OPUS Mobile Application</strong> (Deployed on <strong>Google Play Store</strong> & <strong>Apple App Store</strong>) <span class="badge">Live App</span><br>
+        <strong>Tech Stack:</strong> Flutter, Dart, Firebase (Auth, Firestore, Cloud Storage), Node.js, Express.js, REST APIs, Provider, Razorpay, Google Generative AI (Gemini), Sizer, Mockito
+      </div>
+      <ul class="bullet-list">
+        <li>Architected, developed, and deployed <strong>LEO OPUS</strong>, a production-grade dual-sided mobile application published live on both <strong>Google Play Store</strong> and <strong>Apple App Store</strong>, serving hiring and maintenance service sectors.</li>
+        <li>Engineered the <strong>Hiring Contracts Module</strong> supporting Employer & Candidate workflows, application pipelines, real-time status tracking, and an <strong>AI Resume Matcher</strong> leveraging <strong>Google Generative AI (Gemini)</strong> for candidate-job semantic ranking.</li>
+        <li>Built the <strong>Maintenance Contracts Module</strong> enabling on-demand service catalog browsing, service provider onboarding, scheduled booking, and <strong>Razorpay</strong> payment gateway integration for secure transactional escrow milestones.</li>
+        <li>Designed Node.js & Express.js REST microservices; configured <strong>Cloud Firestore</strong> with real-time stream listeners, compound indexes, and security rules, reducing database query response times by <strong>60%</strong>.</li>
+        <li>Implemented reactive state management via <strong>Provider</strong> adhering to <strong>Clean Architecture</strong> (Presentation, Domain, Data layers) and built responsive layouts using <strong>Sizer</strong> for flawless adaptability across smartphones and tablets.</li>
+        <li>Attained <strong>85%+ test code coverage</strong> by conducting unit and widget testing with <strong>Mockito</strong>, maintaining sub-2-second launch time and 60 FPS performance.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="item-header">
+        <div>
+          <span class="item-title">Incubators</span> – <span class="item-subtitle">Flutter Developer Intern</span>
+        </div>
+        <span class="item-date">Pune, India | Sept 2024 – Nov 2024</span>
+      </div>
+      <div class="tech-stack-line">
+        <strong>Advocate Assistant App</strong> | <strong>Tech Stack:</strong> Flutter, Dart, Firebase Auth, Cloud Firestore, Firebase Storage, Provider, Git/GitHub
+      </div>
+      <ul class="bullet-list">
+        <li>Engineered a legal management mobile app to streamline court case tracking, client directories, hearing dates, and confidential document vaults.</li>
+        <li>Implemented <strong>Firebase Authentication</strong> and structured <strong>Cloud Firestore CRUD</strong> services with local offline caching for uninterrupted court utility.</li>
+        <li>Collaborated within an agile sprint workflow via Git/GitHub, conducting code reviews, architectural modularization, and strict lint compliance.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS UNDERTAKEN -->
+  <section id="projects">
+    <h2>Projects Undertaken</h2>
+
+    <div class="item-block">
+      <div class="item-header">
+        <div>
+          <span class="item-title">Forest Fire Detection & Hazard Alert Mobile Application</span>
+        </div>
+        <span class="item-date">Flutter, Dart, OpenWeather API, Geolocation, Firebase</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Developed a cross-platform mobile application providing real-time environmental hazard monitoring, active wildfire alerts, and risk assessments.</li>
+        <li>Built an emergency response UI with live GPS location tracking, danger radius mapping, and instant notification workflows for first responders.</li>
+        <li>Integrated environmental telemetry data (temperature, wind speed, humidity) from external APIs to enable data-backed emergency action plans.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="item-header">
+        <div>
+          <span class="item-title">Advocate Assistant App (Legal Practice Management)</span>
+        </div>
+        <span class="item-date">Flutter, Dart, Firebase Auth, Firestore, Firebase Storage, PDF Generator</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Built a cross-platform case management app for advocates, automating hearing date notifications, case logs, and digital client folders.</li>
+        <li>Integrated secure PDF document viewing and cloud storage synchronization, eliminating manual paper handling and scheduling conflicts.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TECHNICAL SKILLS -->
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-category"><strong>Languages:</strong> Dart, Java, C++, Python, JavaScript (ES6+), TypeScript, SQL, HTML5, CSS3</div>
+    <div class="skills-category"><strong>Mobile Development:</strong> Flutter, Dart, Material Design 3, Provider, BLoC, GetX, Sizer (Responsive UI), REST API Binding</div>
+    <div class="skills-category"><strong>Backend & Cloud:</strong> Node.js, Express.js, Firebase (Auth, Firestore, Cloud Storage, Realtime DB, Cloud Functions), REST APIs</div>
+    <div class="skills-category"><strong>Databases & Storage:</strong> Cloud Firestore, SQLite / sqflite, MySQL, PostgreSQL, MongoDB</div>
+    <div class="skills-category"><strong>Tools & Platforms:</strong> Git, GitHub, VS Code, Android Studio, Xcode, Postman, Google Play Console, Apple App Store Connect, Razorpay API</div>
+  </section>
+
+  <!-- CORE SUBJECT PROFICIENCIES -->
+  <section id="proficiencies">
+    <h2>Core Subject Proficiencies</h2>
+    <div class="skills-category" style="margin-bottom: 0;">
+      Object-Oriented Programming (OOP) &nbsp;•&nbsp; Data Structures & Algorithms (DSA) &nbsp;•&nbsp; Database Management Systems (DBMS / SQL) &nbsp;•&nbsp; Operating Systems (OS) &nbsp;•&nbsp; Computer Networks (CN) &nbsp;•&nbsp; Software Engineering & Agile
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS & HONORS/AWARDS (TWO COLUMN) -->
+  <section id="certifications-awards">
+    <div class="two-col-grid">
+      <div>
+        <h2>Certifications</h2>
+        <ul class="bullet-list">
+          <li><strong>Flutter Course Completion:</strong> Incubators by Core2web</li>
+          <li><strong>Java Programming Completion:</strong> Core2web</li>
+          <li><strong>Flutter Project Participation:</strong> SuperX by Core2web</li>
+          <li><strong>Mobile App Internship Certificate:</strong> Incubators</li>
+          <li><strong>Ideaspark PBL Certificate:</strong> Dept. of Computer Engg. (SCOE)</li>
+          <li><strong>NCC 'B' & 'A' Certificates:</strong> Ministry of Defence, Govt. of India</li>
+          <li><strong>Certificate of Merit (AISSE):</strong> Central Board of Sec. Education</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Honors & Awards</h2>
+        <ul class="bullet-list">
+          <li><strong>2nd Runner-up:</strong> Yukti Innovation Challenge 2.0, SCOE Institution's Innovation Council (Feb 2025).</li>
+          <li><strong>1st Rank:</strong> Ideaspark Project-Based Learning Competition, Sinhgad College of Engineering (Apr 2024).</li>
+          <li><strong>Hackathon Finalist:</strong> Idea Pitching Round, Innerve Hackathon, Army Institute of Technology, Pune (2025).</li>
+          <li><strong>CBSE Merit Certificate:</strong> Awarded Certificate of Merit in 10th Board AISSE Examination for top academic rank.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

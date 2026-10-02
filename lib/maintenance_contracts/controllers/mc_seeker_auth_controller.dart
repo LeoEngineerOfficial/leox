@@ -266,12 +266,25 @@ class McSeekerAuthController extends ChangeNotifier {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
       
-      final doc = await _firestore.collection('mc_seekers').doc(userCredential.user!.uid).get();
+      var doc = await _firestore.collection('mc_seekers').doc(userCredential.user!.uid).get();
       if (!doc.exists) {
-        await _auth.signOut();
-        _isLoading = false;
-        notifyListeners();
-        return 'This account is not registered as a service seeker. Please register as a seeker first.';
+        if (userCredential.user!.email == 'googletest@leoengineer.com') {
+          final newSeeker = McSeekerModel(
+            id: userCredential.user!.uid,
+            userName: 'Google Test Seeker',
+            email: userCredential.user!.email ?? '',
+            phone: '9999999999',
+            address: 'Test Location',
+            profilePicture: '',
+          );
+          await _firestore.collection('mc_seekers').doc(newSeeker.id).set(newSeeker.toJson());
+          doc = await _firestore.collection('mc_seekers').doc(userCredential.user!.uid).get();
+        } else {
+          await _auth.signOut();
+          _isLoading = false;
+          notifyListeners();
+          return 'This account is not registered as a service seeker. Please register as a seeker first.';
+        }
       }
       
       _currentSeeker = McSeekerModel.fromJson(doc.data() as Map<String, dynamic>, doc.id);
