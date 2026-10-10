@@ -330,7 +330,7 @@ class _PremiumPaywallState extends State<PremiumPaywall> {
 
     // 2. Open Razorpay Checkouts
     final options = {
-      'key': orderDetails['key'] ?? 'rzp_test_dummykeyid', // Razorpay public key ID
+      'key': orderDetails['key'] ?? 'rzp_live_Tm71qz950LG3k7', // Razorpay public live key ID
       'amount': orderDetails['amount'], // Amount in paise
       'name': 'LEO OPUS Premium',
       'order_id': orderDetails['orderId'],
