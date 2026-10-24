@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -302,58 +303,61 @@ class _McSeekerLoginViewState extends State<McSeekerLoginView> {
                                   ),
                         ),
                       ),
-                      SizedBox(height: 2.h),
-                      SizedBox(
-                        width: double.infinity,
-                        child: OutlinedButton.icon(
-                          onPressed:
-                              authController.isLoading
-                                  ? null
-                                  : _loginWithGoogle,
-                          icon:
-                              authController.isLoading
-                                  ? const SizedBox(
-                                    height: 20,
-                                    width: 20,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      color: Color(0xFF0EA5E9),
+                      // Google Sign-In is hidden on iOS per Apple Guideline 4.8
+                      if (!Platform.isIOS) ...[  
+                        SizedBox(height: 2.h),
+                        SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton.icon(
+                            onPressed:
+                                authController.isLoading
+                                    ? null
+                                    : _loginWithGoogle,
+                            icon:
+                                authController.isLoading
+                                    ? const SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        color: Color(0xFF0EA5E9),
+                                      ),
+                                    )
+                                    : Image.asset(
+                                      'assets/icons/google_logo.png',
+                                      height: 24,
+                                      errorBuilder:
+                                          (context, error, stackTrace) =>
+                                              const Icon(
+                                                Icons.g_mobiledata,
+                                                size: 24,
+                                                color: Color(0xFF0EA5E9),
+                                              ),
                                     ),
-                                  )
-                                  : Image.asset(
-                                    'assets/icons/google_logo.png',
-                                    height: 24,
-                                    errorBuilder:
-                                        (context, error, stackTrace) =>
-                                            const Icon(
-                                              Icons.g_mobiledata,
-                                              size: 24,
-                                              color: Color(0xFF0EA5E9),
-                                            ),
-                                  ),
-                          label: Text(
-                            authController.isLoading
-                                ? "Signing in..."
-                                : "Sign In with Google",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Theme.of(context).colorScheme.onSurface,
-                              fontSize: 18,
+                            label: Text(
+                              authController.isLoading
+                                  ? "Signing in..."
+                                  : "Sign In with Google",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Theme.of(context).colorScheme.onSurface,
+                                fontSize: 18,
+                              ),
                             ),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 2.h),
-                            side: BorderSide(
-                              color: const Color(
-                                0xFF0EA5E9,
-                              ).withValues(alpha: 0.5),
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                            style: OutlinedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(vertical: 2.h),
+                              side: BorderSide(
+                                color: const Color(
+                                  0xFF0EA5E9,
+                                ).withValues(alpha: 0.5),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                       SizedBox(height: 2.h),
                       TextButton(
                         onPressed:

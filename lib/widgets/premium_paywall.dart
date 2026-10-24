@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -358,6 +359,79 @@ class _PremiumPaywallState extends State<PremiumPaywall> {
     final isDark = theme.brightness == Brightness.dark;
     final colorScheme = theme.colorScheme;
     final provider = context.watch<SubscriptionProvider>();
+
+    // ── iOS: Razorpay is not allowed per Apple Guideline 3.1.1 ──────────────
+    if (Platform.isIOS) {
+      final iosBody = Padding(
+        padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 4.h),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.workspace_premium_rounded, size: 64, color: Theme.of(context).colorScheme.primary),
+            SizedBox(height: 2.h),
+            Text(
+              "LEO OPUS Premium",
+              style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w900),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 1.5.h),
+            Text(
+              "To subscribe to a premium plan, please visit our website on a browser. Subscriptions purchased on the web are fully accessible on this app.",
+              style: TextStyle(fontSize: 15.sp, color: Colors.grey, height: 1.5),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 3.h),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.open_in_browser, color: Colors.white),
+                label: Text(
+                  "Visit Website to Subscribe",
+                  style: TextStyle(fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+                onPressed: () => Navigator.pop(context),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+
+      if (widget.isFullScreen) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        return Scaffold(
+          backgroundColor: isDark ? const Color(0xFF0F172A) : Colors.grey[50],
+          appBar: AppBar(
+            backgroundColor: isDark ? const Color(0xFF0F172A) : Colors.white,
+            elevation: 0,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios_new_rounded, color: isDark ? Colors.white : Colors.black87),
+              onPressed: () => Navigator.pop(context),
+            ),
+            title: Text("LEO OPUS Premium",
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold,
+                  color: isDark ? Colors.white : Colors.black87)),
+          ),
+          body: SafeArea(child: iosBody),
+        );
+      }
+      return Container(
+        padding: EdgeInsets.only(top: 2.h, left: 5.w, right: 5.w, bottom: 2.h),
+        decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF0F172A) : Colors.white,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(28),
+            topRight: Radius.circular(28),
+          ),
+        ),
+        child: iosBody,
+      );
+    }
+    // ── End iOS guard ────────────────────────────────────────────────────────
 
     // Filter plans applicable to user's role and exclude free trial/free plans (price = 0)
     final rolePlans = provider.plans

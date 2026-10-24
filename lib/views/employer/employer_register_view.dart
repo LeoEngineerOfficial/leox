@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:leox/providers/employer_auth_provider.dart';
 import 'package:leox/views/employer/employer_login_view.dart';
@@ -349,72 +350,75 @@ class _EmployerRegisterViewState extends State<EmployerRegisterView> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 24),
-                Consumer<EmployerAuthProvider>(
-                  builder: (context, auth, _) {
-                    return SizedBox(
-                      width: double.infinity,
-                      child: OutlinedButton.icon(
-                        onPressed: auth.isLoading ? null : () async {
-                          final provider = context.read<EmployerAuthProvider>();
-                          await provider.signUpWithGoogle();
-                          
-                          if (provider.errorMessage != null && context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(provider.errorMessage!),
-                                backgroundColor: Colors.red,
-                              ),
-                            );
-                            CustomPopup.show(
-                              context,
-                              type: CustomPopupType.error,
-                              title: 'Google Sign-Up Failed',
-                              message: provider.errorMessage!,
-                            );
-                          } else if (provider.isLoggedIn && context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Registered successfully with Google!'),
-                                backgroundColor: Colors.green,
-                              ),
-                            );
-                            await CustomPopup.show(
-                              context,
-                              type: CustomPopupType.success,
-                              title: 'Registration Successful!',
-                              message: 'Your account was registered successfully with Google.',
-                              buttonLabel: 'Go to Dashboard',
-                            );
-                            if (context.mounted) {
-                              Navigator.of(context).popUntil((route) => route.isFirst);
+                // Google Sign-Up is hidden on iOS per Apple Guideline 4.8
+                if (!Platform.isIOS) ...[  
+                  const SizedBox(height: 24),
+                  Consumer<EmployerAuthProvider>(
+                    builder: (context, auth, _) {
+                      return SizedBox(
+                        width: double.infinity,
+                        child: OutlinedButton.icon(
+                          onPressed: auth.isLoading ? null : () async {
+                            final provider = context.read<EmployerAuthProvider>();
+                            await provider.signUpWithGoogle();
+                            
+                            if (provider.errorMessage != null && context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(provider.errorMessage!),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                              CustomPopup.show(
+                                context,
+                                type: CustomPopupType.error,
+                                title: 'Google Sign-Up Failed',
+                                message: provider.errorMessage!,
+                              );
+                            } else if (provider.isLoggedIn && context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Registered successfully with Google!'),
+                                  backgroundColor: Colors.green,
+                                ),
+                              );
+                              await CustomPopup.show(
+                                context,
+                                type: CustomPopupType.success,
+                                title: 'Registration Successful!',
+                                message: 'Your account was registered successfully with Google.',
+                                buttonLabel: 'Go to Dashboard',
+                              );
+                              if (context.mounted) {
+                                Navigator.of(context).popUntil((route) => route.isFirst);
+                              }
                             }
-                          }
-                        },
-                        icon: auth.isLoading 
-                          ? const SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: CircularProgressIndicator(strokeWidth: 2),
-                            )
-                          : Image.asset(
-                              'assets/icons/google_logo.png',
-                              height: 24,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  const Icon(Icons.g_mobiledata, size: 24),
+                          },
+                          icon: auth.isLoading 
+                            ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(strokeWidth: 2),
+                              )
+                            : Image.asset(
+                                'assets/icons/google_logo.png',
+                                height: 24,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    const Icon(Icons.g_mobiledata, size: 24),
+                              ),
+                          label: Text(auth.isLoading ? "Signing up..." : "Sign Up with Google"),
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            side: BorderSide(color: theme.dividerColor),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                        label: Text(auth.isLoading ? "Signing up..." : "Sign Up with Google"),
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          side: BorderSide(color: theme.dividerColor),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                      ),
-                    );
-                  }
-                ),
+                      );
+                    }
+                  ),
+                ],
                 const SizedBox(height: 24),
                 Center(
                   child: Column(

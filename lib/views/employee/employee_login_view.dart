@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:leox/providers/employee_providers/employee_auth_provider.dart';
@@ -380,80 +381,83 @@ class _EmployeeLoginViewState extends State<EmployeeLoginView> {
                       },
                     ),
 
-                    const SizedBox(height: 24),
+                    // Google Sign-In is hidden on iOS per Apple Guideline 4.8
+                    if (!Platform.isIOS) ...[  
+                      const SizedBox(height: 24),
 
-                    Consumer<EmployeeAuthProvider>(
-                      builder: (context, auth, _) {
-                        return SizedBox(
-                          width: double.infinity,
-                          child: OutlinedButton.icon(
-                            onPressed: auth.isLoading ? null : () async {
-                              final provider = context.read<EmployeeAuthProvider>();
-                              await SessionService.saveTargetRole('employee');
-                              await provider.signInWithGoogle();
-                              
-                              if (provider.errorMessage != null && context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(provider.errorMessage!),
-                                    backgroundColor: Colors.red,
-                                  ),
-                                );
-                                CustomPopup.show(
-                                  context,
-                                  type: CustomPopupType.error,
-                                  title: 'Google Sign-In Failed',
-                                  message: provider.errorMessage!,
-                                );
-                              } else if (provider.isLoggedIn && context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Logged in successfully with Google!'),
-                                    backgroundColor: Colors.green,
-                                  ),
-                                );
-                                await CustomPopup.show(
-                                  context,
-                                  type: CustomPopupType.success,
-                                  title: 'Welcome Back!',
-                                  message: 'You have logged in successfully with Google.',
-                                  buttonLabel: 'Go to Dashboard',
-                                );
-                                if (context.mounted) {
-                                  Navigator.of(context).popUntil((route) => route.isFirst);
+                      Consumer<EmployeeAuthProvider>(
+                        builder: (context, auth, _) {
+                          return SizedBox(
+                            width: double.infinity,
+                            child: OutlinedButton.icon(
+                              onPressed: auth.isLoading ? null : () async {
+                                final provider = context.read<EmployeeAuthProvider>();
+                                await SessionService.saveTargetRole('employee');
+                                await provider.signInWithGoogle();
+                                
+                                if (provider.errorMessage != null && context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(provider.errorMessage!),
+                                      backgroundColor: Colors.red,
+                                    ),
+                                  );
+                                  CustomPopup.show(
+                                    context,
+                                    type: CustomPopupType.error,
+                                    title: 'Google Sign-In Failed',
+                                    message: provider.errorMessage!,
+                                  );
+                                } else if (provider.isLoggedIn && context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('Logged in successfully with Google!'),
+                                      backgroundColor: Colors.green,
+                                    ),
+                                  );
+                                  await CustomPopup.show(
+                                    context,
+                                    type: CustomPopupType.success,
+                                    title: 'Welcome Back!',
+                                    message: 'You have logged in successfully with Google.',
+                                    buttonLabel: 'Go to Dashboard',
+                                  );
+                                  if (context.mounted) {
+                                    Navigator.of(context).popUntil((route) => route.isFirst);
+                                  }
                                 }
-                              }
-                            },
-                            icon: auth.isLoading 
-                              ? const SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                  child: CircularProgressIndicator(strokeWidth: 2),
-                                )
-                              : Image.asset(
-                                  'assets/icons/google_logo.png',
-                                  height: 24,
-                                  errorBuilder: (context, error, stackTrace) =>
-                                      const Icon(Icons.g_mobiledata, size: 24),
+                              },
+                              icon: auth.isLoading 
+                                ? const SizedBox(
+                                    height: 20,
+                                    width: 20,
+                                    child: CircularProgressIndicator(strokeWidth: 2),
+                                  )
+                                : Image.asset(
+                                    'assets/icons/google_logo.png',
+                                    height: 24,
+                                    errorBuilder: (context, error, stackTrace) =>
+                                        const Icon(Icons.g_mobiledata, size: 24),
+                                  ),
+                              label: Text(
+                                auth.isLoading ? "Signing in..." : "Sign In with Google",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: theme.colorScheme.onSurface,
                                 ),
-                            label: Text(
-                              auth.isLoading ? "Signing in..." : "Sign In with Google",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: theme.colorScheme.onSurface,
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                side: BorderSide(color: theme.dividerColor),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               ),
                             ),
-                            style: OutlinedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(vertical: 16),
-                              side: BorderSide(color: theme.dividerColor),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                        );
-                      }
-                    ),
+                          );
+                        }
+                      ),
+                    ],
 
                     const SizedBox(height: 24),
 
