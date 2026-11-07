@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:leox/providers/employee_providers/employee_auth_provider.dart';
@@ -136,7 +137,7 @@ class EmployeeDrawer extends StatelessWidget {
                   onTap: () => _navigate(context, const EmployeeProfileView()),
                 ),
 
-                _drawerItem(
+                if (!Platform.isIOS) _drawerItem(
                   context,
                   icon: Icons.credit_card_outlined,
                   activeIcon: Icons.credit_card,

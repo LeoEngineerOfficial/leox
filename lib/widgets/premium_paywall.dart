@@ -24,6 +24,10 @@ class PremiumPaywall extends StatefulWidget {
 
   /// Static helper to check features anywhere in the app
   static void check(BuildContext context, String featureKey, VoidCallback onAuthorized) {
+    if (Platform.isIOS) {
+      onAuthorized();
+      return;
+    }
     final subProvider = context.read<SubscriptionProvider>();
     if (subProvider.hasFeature(featureKey)) {
       onAuthorized();
@@ -34,6 +38,7 @@ class PremiumPaywall extends StatefulWidget {
 
   /// Static helper to directly show the paywall bottom sheet
   static void showPaywall(BuildContext context, String featureKey) {
+    if (Platform.isIOS) return;
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
