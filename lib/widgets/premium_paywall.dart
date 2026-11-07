@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -64,14 +65,18 @@ class _PremiumPaywallState extends State<PremiumPaywall> {
   @override
   void initState() {
     super.initState();
-    _razorpay = Razorpay();
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    if (!Platform.isIOS) {
+      _razorpay = Razorpay();
+      _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+      _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    }
   }
 
   @override
   void dispose() {
-    _razorpay.clear();
+    if (!Platform.isIOS) {
+      _razorpay.clear();
+    }
     _couponController.dispose();
     super.dispose();
   }
